@@ -3,50 +3,74 @@ package co.edu.uniquindio.poo;
 import java.time.LocalDate;
 
 public class Transaccion {
-    private final double codigo;
+    private final String codigo;
     private final int valor;
     private final LocalDate fecha;
     private final String descripcion;
-    private final boolean estado;
+    private final boolean estadoCuenta;
     private final Tipo tipo;
-    private int dinero;
 
-
-
-    public Transaccion(double codigo, int valor, LocalDate fecha, String descripcion, boolean estado, Tipo tipo, int dinero ) {
+    /*
+     * Método constructor de la clase Transacción
+     */
+    public Transaccion (String codigo, int valor, LocalDate fecha, String descripcion, boolean estadoCuenta, Tipo tipo){
         this.codigo = codigo;
         this.valor = valor;
         this.fecha = fecha;
         this.descripcion = descripcion;
-        this.estado = estado;
+        this.estadoCuenta = true;
         this.tipo = tipo;
-        this.dinero= dinero;
-        assert codigo >0;
-        assert valor >0;
-        assert fecha != null;
+        assert codigo != null && !codigo.isBlank();
+        assert valor > 0;
         assert descripcion != null && !descripcion.isBlank();
-
     }
-    public double getCodigo() {
+
+    /*
+     * Método para obtener el codigo de una transacción
+     * @return codigo de una transacción bancaria
+     */
+    public String getCodigo (){
         return codigo;
     }
-    public int getValor() {
+
+    /*
+     * Método para obtener el valor de una transacción
+     * @return valor de una transacción
+     */
+    public int getValor (){
         return valor;
     }
-    public LocalDate getFecha() {
+
+    /*
+     * Método para obtener la fecha de una transacción
+     * @return fecha de una transacción
+     */
+    public LocalDate getFecha (){
         return fecha;
     }
-    public String getDescripcion() {
+
+    /*
+     * Método para obtener la descripcion de una transacción
+     * @return descripcion de una transacción
+     */
+    public String getDescripcion (){
         return descripcion;
     }
-    public boolean isEstado() {
-        return estado;
+
+    
+    public boolean getEstadoCuenta (){
+        return estadoCuenta;
     }
-    public Tipo getTipo() {
+
+    public Tipo getTipo (){
         return tipo;
     }
 
-    public int getDinero(){
-        return dinero;
-    }
+    /*public void transferirDinero (CuentaBancaria cuentaBancaria, CuentaBancaria cuentaDestino){
+        if (cuentaBancaria.getSaldo() >= valor){
+            cuentaBancaria.retirarDinero(valor);
+            cuentaDestino.depositarDinero(valor);
+        }
+    }*/
+
 }

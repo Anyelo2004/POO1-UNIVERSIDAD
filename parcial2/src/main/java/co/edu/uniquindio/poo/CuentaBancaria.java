@@ -1,64 +1,76 @@
 package co.edu.uniquindio.poo;
-
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public abstract class CuentaBancaria {
-
     private final int numeroCuenta;
-    private double saldo;
-    private boolean estado;
-    private final Collection<Transaccion> listaTransacciones;
+    public double saldo;
+    protected boolean estadoCuenta;
+    private final Titular titular;
+    private final Collection<Transaccion> listaTransaccion;
     
- 
-    
-    public CuentaBancaria(Titular titular, int numeroCuenta, double saldo, boolean estado,
-            Collection<Transaccion> listTransacciones) {
-       
+
+    public CuentaBancaria (Titular titular,int numeroCuenta, double saldo, boolean estadoCuenta){
+        this.titular = titular;
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
-        this.estado = estado;
-        this.listaTransacciones = new LinkedList<>();
-       
+        this.estadoCuenta = true;
+        this.listaTransaccion = new LinkedList<>();
     }
-  
-    public int getNumeroCuenta() {
+
+    public Titular geTitular(){
+        return titular;
+    }
+
+    public int getNumeroCuenta (){
         return numeroCuenta;
     }
-    public double getSaldo() {
+
+    public double getSaldo(){
+        if(estadoCuenta == true){
+        }
         return saldo;
     }
-    public boolean cuentaActiva() {
-        return estado;
-        
+
+    public boolean cuentaActiva (){
+        return estadoCuenta;
+    }
+
+    public Collection<Transaccion> getListaTransacciones (){
+        return Collections.unmodifiableCollection(listaTransaccion);
     }
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-    public Collection<Transaccion> getListaTransacciones() {
-        return listaTransacciones;
-    }
-      /**
-     * @param valor
-     */
-     public void depositar (double valor){
-       assert valor >0;
-        saldo = saldo + valor;
-        estado = true;
-    }
-    /**
-     * @param valor
-     */
-    public void retirar (double valor){
-        assert valor >0;
-        assert valor <= saldo;
-        saldo = saldo-valor;
-        if(saldo==0) estado = false;
 
+    public void setEstadoCuenta(boolean estadoCuenta) {
+        this.estadoCuenta = estadoCuenta;
     }
+
+    /*public void depositarDinero (double dinero){
+        assert dinero > 0;
+                saldo += dinero;
+                estadoCuenta = false ;
+        }
+    
+    public abstract void retirarDinero(double dinero);
+
+
+    /*public void retirarDinero (double dinero){
+        if (dinero < saldo){
+            saldo -= dinero;
+         estadoCuenta = true;
+        } else if (dinero > saldo){
+            if (dinero < tipoCuenta.getLimiteSobregiro()){
+                saldo -= dinero;
+                if (saldo == 0){
+                    estadoCuenta = false;
+                }
+            }
+        }
+        
+    }*/
 
 
 }
