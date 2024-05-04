@@ -13,10 +13,10 @@ public class BancoTest {
     @Test
     public void realizarDeposito (){
         LOG.info("Inicio test realizar deposito");
-        Banco banco = new Banco ("Banco Hogar",Collection<Titular> listaTitulares,Collection<CuentaBancaria> cuentasba);
+        Banco banco = new Banco ("Banco Hogar");
         var cuenta = new Corriente(new Titular("Valentina", "Rodriguez"), 819280, 
         100000, false, 50000);
-        banco.añadirCuentasBancarias(cuenta);
+        banco.añadircuentasBancarias(cuenta);
         cuenta.retirarDinero(130000);
         assertEquals(-30000, cuenta.getSaldo());
        assertEquals(20000, cuenta.getLimiteSobregiro());
@@ -32,9 +32,9 @@ public class BancoTest {
          300000, true, 50000);
         var cuenta2 = new Corriente(new Titular("a", "b"), 2002000100, 
          40000, true, 50000);
-        banco.añadirCuentasBancarias(cuenta);
-        banco.añadirCuentasBancarias(cuenta2);
-        var transacción = new Transaccion("9182", 100000, LocalDate.of(2024, 05, 02), "a", false, TipoTransaccion.DEPOSITO);
+        banco.añadircuentasBancarias(cuenta);
+        banco.añadircuentasBancarias(cuenta2);
+        var transacción = new Transaccion("9182", 100000, LocalDate.of(2024, 05, 02), "a", false, Tipo.DEPOSITO);
         transacción.transferirDinero(cuenta, cuenta2);
         System.out.println(cuenta2.getSaldo());
         
