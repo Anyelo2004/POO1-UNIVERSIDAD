@@ -2,8 +2,6 @@ package co.edu.uniquindio.poo;
 
 
 public class CuentaAhorro extends CuentaBancaria {
-    
-
     private final double tasaInteres;
 
 

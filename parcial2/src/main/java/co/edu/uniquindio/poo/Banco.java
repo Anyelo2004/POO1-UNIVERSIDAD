@@ -5,17 +5,9 @@ import java.util.LinkedList;
 
 
 public class Banco {
-    
-
-
     private final String nombre;
-    
-
     private final Collection<Titular> listaTitulares;
-    
-
     private final Collection<CuentaBancaria> listaCuentas;
-    
 
     public Banco(String nombre) {
         this.nombre = nombre;

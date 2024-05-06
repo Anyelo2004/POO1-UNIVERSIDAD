@@ -2,8 +2,6 @@ package co.edu.uniquindio.poo;
 
 
 public class CuentaCorriente extends CuentaBancaria{
-
-
     private double sobregiro;
 
     public CuentaCorriente(String numeroCuenta, double saldo, boolean estadoCuenta, Titular titular, double sobregiro) {

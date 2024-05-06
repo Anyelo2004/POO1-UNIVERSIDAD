@@ -1,10 +1,7 @@
 package co.edu.uniquindio.poo;
 
 public class Titular {
-
     private final String nombre;
-
-
     private final String apellido;
 
     public Titular(String nombre, String apellido) {

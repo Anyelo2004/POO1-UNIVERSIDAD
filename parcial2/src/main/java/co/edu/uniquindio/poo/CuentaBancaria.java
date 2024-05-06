@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 
 public abstract class CuentaBancaria {
-    
     private final String numeroCuenta;
     protected double saldo;
     protected boolean estadoCuenta;

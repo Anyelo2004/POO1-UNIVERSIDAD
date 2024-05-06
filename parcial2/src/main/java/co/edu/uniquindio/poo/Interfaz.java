@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Interfaz extends JFrame {
@@ -23,8 +24,11 @@ public class Interfaz extends JFrame {
     private JTextField estadoField;
     private JButton crearCuentaButton;
 
+    private JTextArea descripcionTransaccionArea;
+    private JButton realizarTransaccionButton;
+
     /**
-     * Constructor de la clase InterfazCuentaBancaria.
+     * Constructor de la clase Interfaz.
      * Configura la interfaz gráfica y los componentes.
      */
     public Interfaz(){
@@ -97,7 +101,7 @@ public class Interfaz extends JFrame {
      */
     private boolean verificarCredenciales(String username, String password) {
         // Verificar las credenciales con tu lógica de autenticación
-        return username.equals("usuario") && password.equals("contraseña");
+        return username.equals("anyelo") && password.equals("anyelo");
     }
 
     /**
@@ -142,6 +146,7 @@ public class Interfaz extends JFrame {
             estadoField.setText(estado ? "Activo" : "Inactivo");
 
             JOptionPane.showMessageDialog(this, "Cuenta creada:\nTitular: " + titular + "\nNúmero de Cuenta: " + numeroCuenta + "\nSaldo: " + saldo + "\nEstado: " + (estado ? "Activo" : "Inactivo"), "Cuenta Creada", JOptionPane.INFORMATION_MESSAGE);
+            mostrarTransaccion();
         });
 
         // Agregar componentes al panel de crear cuenta
@@ -169,4 +174,53 @@ public class Interfaz extends JFrame {
         this.revalidate();
         this.repaint();
     }
+
+    /**
+     * Muestra el panel para realizar una transacción.
+     */
+    private void mostrarTransaccion() {
+        JPanel transaccionPanel = new JPanel();
+        transaccionPanel.setOpaque(false);
+        transaccionPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        // Componentes para realizar una transacción
+        JLabel descripcionLabel = new JLabel("Descripción:");
+        descripcionLabel.setForeground(Color.BLACK);
+        descripcionTransaccionArea = new JTextArea(5, 20);
+        descripcionTransaccionArea.setLineWrap(true);
+        descripcionTransaccionArea.setWrapStyleWord(true);
+        realizarTransaccionButton = new JButton("Realizar Transacción");
+        realizarTransaccionButton.setBackground(new Color(51, 153, 255));
+        realizarTransaccionButton.setForeground(Color.WHITE);
+        realizarTransaccionButton.setFocusPainted(false);
+
+        // Acción para el botón de realizar transacción
+        realizarTransaccionButton.addActionListener(e -> {
+            String descripcion = descripcionTransaccionArea.getText();
+            // Aquí puedes implementar la lógica para realizar la transacción
+            JOptionPane.showMessageDialog(this, "Transacción realizada con éxito:\nDescripción: " + descripcion, "Transacción Exitosa", JOptionPane.INFORMATION_MESSAGE);
+        });
+
+        // Agregar componentes al panel de realizar transacción
+        gbc.gridwidth = 2;
+        transaccionPanel.add(descripcionLabel, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        transaccionPanel.add(descripcionTransaccionArea, gbc);
+        gbc.gridy++;
+        transaccionPanel.add(realizarTransaccionButton, gbc);
+
+        // Actualizar la ventana principal con el panel de realizar transacción
+        this.getContentPane().removeAll();
+        this.getContentPane().add(transaccionPanel);
+        this.revalidate();
+        this.repaint();
+    }
+
+
 }

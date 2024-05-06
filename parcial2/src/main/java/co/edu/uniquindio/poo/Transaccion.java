@@ -3,7 +3,6 @@ package co.edu.uniquindio.poo;
 import java.time.LocalDate;
 
 public class Transaccion {
-
     private final String codigo;
     private final int valor;
     private final LocalDate fecha;
