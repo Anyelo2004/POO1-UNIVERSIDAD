@@ -2,75 +2,94 @@ package co.edu.uniquindio.poo;
 
 import java.time.LocalDate;
 
+/**
+ * Clase que representa una transacción realizada en una cuenta bancaria.
+ * Cada transacción tiene un código único, un valor, una fecha, una descripción,
+ * un estado de cuenta y un tipo de transacción (retiro o depósito).
+ */
 public class Transaccion {
+    /** Código único de la transacción. */
     private final String codigo;
-    private final int valor;
-    private final LocalDate fecha;
-    private final String descripcion;
-    private final boolean estadoCuenta;
-    private final Tipo tipo;
 
-    /*
-     * Método constructor de la clase Transacción
+    /** Valor de la transacción. */
+    private final int valor;
+
+    /** Fecha en que se realizó la transacción. */
+    private final LocalDate fecha;
+
+    /** Descripción de la transacción. */
+    private final String descripcion;
+
+    /** Estado de la cuenta después de la transacción. */
+    private final boolean estadoCuenta;
+
+    /** Tipo de la transacción (retiro o depósito). */
+    private final Tipo tipo;
+    
+    /**
+     * Constructor de la clase Transaccion.
+     * @param codigo El código único de la transacción.
+     * @param valor El valor de la transacción.
+     * @param fecha La fecha en que se realizó la transacción.
+     * @param descripcion La descripción de la transacción.
+     * @param estadoCuenta El estado de la cuenta después de la transacción.
+     * @param tipo El tipo de transacción (retiro o depósito).
      */
-    public Transaccion (String codigo, int valor, LocalDate fecha, String descripcion, boolean estadoCuenta, Tipo tipo){
+    public Transaccion(String codigo, int valor, LocalDate fecha, String descripcion, boolean estadoCuenta, Tipo tipo) {
         this.codigo = codigo;
         this.valor = valor;
         this.fecha = fecha;
         this.descripcion = descripcion;
-        this.estadoCuenta = true;
+        this.estadoCuenta = estadoCuenta;
         this.tipo = tipo;
-        assert codigo != null && !codigo.isBlank();
-        assert valor > 0;
-        assert descripcion != null && !descripcion.isBlank();
     }
 
-    /*
-     * Método para obtener el codigo de una transacción
-     * @return codigo de una transacción bancaria
+    /**
+     * Obtiene el código único de la transacción.
+     * @return El código único de la transacción.
      */
-    public String getCodigo (){
+    public String getCodigo() {
         return codigo;
     }
 
-    /*
-     * Método para obtener el valor de una transacción
-     * @return valor de una transacción
+    /**
+     * Obtiene el valor de la transacción.
+     * @return El valor de la transacción.
      */
-    public int getValor (){
+    public int getValor() {
         return valor;
     }
 
-    /*
-     * Método para obtener la fecha de una transacción
-     * @return fecha de una transacción
+    /**
+     * Obtiene la fecha en que se realizó la transacción.
+     * @return La fecha de la transacción.
      */
-    public LocalDate getFecha (){
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    /*
-     * Método para obtener la descripcion de una transacción
-     * @return descripcion de una transacción
+    /**
+     * Obtiene la descripción de la transacción.
+     * @return La descripción de la transacción.
      */
-    public String getDescripcion (){
+    public String getDescripcion() {
         return descripcion;
     }
 
-    
-    public boolean getEstadoCuenta (){
+    /**
+     * Obtiene el estado de la cuenta después de la transacción.
+     * @return true si la cuenta está activa después de la transacción, false si está inactiva.
+     */
+    public boolean isEstadoCuenta() {
         return estadoCuenta;
     }
 
-    public Tipo getTipo (){
+    /**
+     * Obtiene el tipo de la transacción.
+     * @return El tipo de la transacción (retiro o depósito).
+     */
+    public Tipo getTipo() {
         return tipo;
     }
-
-    /*public void transferirDinero (CuentaBancaria cuentaBancaria, CuentaBancaria cuentaDestino){
-        if (cuentaBancaria.getSaldo() >= valor){
-            cuentaBancaria.retirarDinero(valor);
-            cuentaDestino.depositarDinero(valor);
-        }
-    }*/
 
 }
