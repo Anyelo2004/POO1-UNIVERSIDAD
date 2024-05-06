@@ -1,11 +1,9 @@
 package co.edu.uniquindio.poo;
-
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,15 +29,13 @@ public class Interfaz extends JFrame {
      */
     public Interfaz(){
         // Configuración de la ventana principal
-        this.setSize(600, 400);
-        this.setTitle("¡Bienvenido al Banco Increíble!");
+        this.setSize(400, 400);
+        this.setTitle("Bancolombia");
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        // Fondo de pantalla
-        JLabel background = new JLabel(new ImageIcon("background.jpg"));
-        background.setLayout(new GridBagLayout());
-        this.setContentPane(background);
+        // Establecer el color de fondo a amarillo
+        getContentPane().setBackground(Color.YELLOW);
 
         // Panel para el inicio de sesión
         JPanel loginPanel = new JPanel();
@@ -50,7 +46,7 @@ public class Interfaz extends JFrame {
         loginGbc.gridy = 0;
         loginGbc.gridwidth = 2;
         loginGbc.fill = GridBagConstraints.HORIZONTAL;
-        loginGbc.insets = new Insets(10, 10, 10, 10);
+        loginGbc.insets = new Insets(10, 10, 30, 10);
 
         // Componentes para el inicio de sesión
         JLabel usernameLabel = new JLabel("Usuario:");
@@ -61,7 +57,7 @@ public class Interfaz extends JFrame {
         passwordField = new JPasswordField(15);
         loginButton = new JButton("Iniciar Sesión");
         loginButton.setBackground(new Color(51, 153, 255));
-        loginButton.setForeground(Color.WHITE);
+        loginButton.setForeground(Color.white);
         loginButton.setFocusPainted(false);
 
         // Acción para el botón de inicio de sesión
@@ -74,7 +70,7 @@ public class Interfaz extends JFrame {
                 loginPanel.repaint();
                 mostrarCrearCuenta();
             } else {
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña son incorrectos", "Error de ingreso", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -173,6 +169,4 @@ public class Interfaz extends JFrame {
         this.revalidate();
         this.repaint();
     }
-
 }
-

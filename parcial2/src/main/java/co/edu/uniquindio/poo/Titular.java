@@ -1,20 +1,29 @@
 package co.edu.uniquindio.poo;
 
 public class Titular {
-    private final String nombresTitular;
-    private final String apellidosTitular;
 
-    public Titular (String nombresTitular, String apellidosTitular){
-        this.nombresTitular = nombresTitular;
-        this.apellidosTitular = apellidosTitular;
+    private final String nombre;
+
+
+    private final String apellido;
+
+    public Titular(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 
-    public String getNombresTitular (){
-        return nombresTitular;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getApellidosTitular (){
-        return apellidosTitular;
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    @Override
+    public String toString() {
+        return "Titular [nombre=" + nombre + ", apellido=" + apellido + "]";
     }
 
 }
